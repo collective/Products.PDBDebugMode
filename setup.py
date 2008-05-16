@@ -1,13 +1,15 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
+version = '0.2'
 
 setup(name='Products.PDBDebugMode',
       version=version,
       description="Post-mortem debugging on Zope 2 excpetions",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=open(
+          os.path.join("Products", "PDBDebugMode", "README.txt")
+          ).read() + "\n" + open(
+          os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
