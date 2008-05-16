@@ -1,0 +1,12 @@
+<configure 
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser">
+
+  <browser:page
+     name="pdb"
+     for="*"
+     class=".browser.RaiseExceptionView"
+     permission="cmf.ManagePortal"
+     />
+
+</configure>
