@@ -2,13 +2,14 @@
 
 import sys
 import re
+import logging
 from pdb import set_trace
 from pdb import post_mortem
-from logging import getLoggerClass
 
-Logger = getLoggerClass()
+logger = logging.getLogger('Products.PDBDebugMode')
 
-error = Logger.error
+LoggerClass = logging.getLoggerClass()
+orig_error = LoggerClass.error
 
 ignore_matchers = (
     # There's a known error in ZCatalog where deleting a container
@@ -18,12 +19,17 @@ ignore_matchers = (
         'object with a uid of ').search,
     )
 
-def pdberror(self, msg, *args, **kw):
+def error(self, msg, *args, **kw):
     """Drop into pdb when logging an error."""
-    result = error(self, msg, *args, **kw)
+    result = orig_error(self, msg, *args, **kw)
 
     for matcher in ignore_matchers:
-        if matcher(msg):
+        try:
+            match = matcher(msg)
+        except:
+            logger.exception('Matcher %r failed for log message %r' %
+                             (matcher, msg))
+        if match:
             break
     else:
         type, value, traceback = sys.exc_info()
@@ -35,5 +41,3 @@ def pdberror(self, msg, *args, **kw):
             post_mortem(traceback)
         
     return result
-
-Logger.error = pdberror

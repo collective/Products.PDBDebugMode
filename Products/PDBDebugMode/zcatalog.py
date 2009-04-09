@@ -6,22 +6,17 @@ import pdb
 
 from Products.ZCatalog.ZCatalog import ZCatalog
 
-orig_catalog_object = ZCatalog.catalog_object
-
-def pdb_catalog_object(self, obj, uid=None, idxs=None,
+def catalog_object(self, obj, uid=None, idxs=None,
                     update_metadata=1, pghandler=None):
     """Wrap to do post_mortem debugging on error."""
-    #if 'portal_factory' in uid: pdb.set_trace()
     try:
-        return orig_catalog_object(
+        return ZCatalog.catalog_object(
             self, obj, uid=uid, idxs=idxs,
             update_metadata=update_metadata, pghandler=pghandler)
     except:
         t, v, tb = sys.exc_info()
         pdb.post_mortem(tb)
         raise
-
-ZCatalog.catalog_object = pdb_catalog_object
 
 def refreshCatalog(self, clear=0, pghandler=None):
     """Don't swallow errors on object indexing errors."""
@@ -47,5 +42,3 @@ def refreshCatalog(self, clear=0, pghandler=None):
             self.catalog_object(obj, p, pghandler=pghandler)
 
     if pghandler: pghandler.finish()
-
-#ZCatalog.refreshCatalog = refreshCatalog

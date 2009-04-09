@@ -1,10 +1,21 @@
 Changelog
 =========
 
-0.3 - Unreleased
+0.3 - 2009-04-08
 ----------------
 
-* More flexible log matching
+* Use collective.monkeypatcher to move all patches into ZCML
+
+* Fully deprecate the Zope exception handler in favor of the logging
+  hook since the Zope exception handler uses the logging module
+  anyways and more can be done by hooking at that level.
+
+* Handle failed matches in Products.PDBDebugMode.pdblogging more
+  gracefully
+
+* More flexible log matching.  Change
+  Products.PDBDebugMode.pdblogging.ignore_regexes to ignore_matchers
+  and accept any callable.
 
 0.2 - 2008-05-15
 ----------------

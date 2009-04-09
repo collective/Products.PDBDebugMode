@@ -1,5 +1,15 @@
-from ZPublisher.Publish import call_object
-from pdb import runcall
+import pdb
+
+from ZPublisher import Publish
+
+try:
+    # XXX Check for PlacelessTranslationService monkeypatch
+    from Products.PlacelessTranslationService import PatchStringIO
+    PatchStringIO # pyflakes
+except ImportError:
+    real_publish = Publish.publish
+else:
+    real_publish = Publish.old_publish
 
 def resolveDottedName(dotted_name):
     """Resolve the dotted name importing as necessary then using
@@ -34,7 +44,7 @@ def pdb_runcall(object, args, request):
         runcall_cookie = request.cookies.get('pdb_runcall', False)
         if runcall_cookie:
             response.expireCookie('pdb_runcall')
-            return call_object(object, args, request) 
+            return Publish.call_object(object, args, request) 
         else:
             response.setCookie('pdb_runcall', 1)
 
@@ -55,6 +65,19 @@ def pdb_runcall(object, args, request):
                 if obj.im_func is getattr(object, 'im_func', None):
                     break
             else:
-                return runcall(object, *args)
+                return pdb.runcall(object, *args)
 
-    return call_object(object, args, request) 
+    return Publish.call_object(object, args, request) 
+
+def pdb_publish(request, module_name, after_list, debug=0,
+                call_object=pdb_runcall,
+                missing_name=Publish.missing_name,
+                dont_publish_class=Publish.dont_publish_class,
+                mapply=Publish.mapply, ):
+    """Hook the publish function to override the function used to call
+    the result of the request traversal."""
+    return real_publish(request, module_name, after_list, debug=0,
+                call_object=call_object,
+                missing_name=missing_name,
+                dont_publish_class=dont_publish_class,
+                mapply=mapply, )
