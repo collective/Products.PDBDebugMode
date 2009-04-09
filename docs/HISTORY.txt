@@ -4,7 +4,12 @@ Changelog
 0.3 - Unreleased
 ----------------
 
-* More flexible log matching
+* Handle failed matches in Products.PDBDebugMode.pdblogging more
+  gracefully
+
+* More flexible log matching.  Change
+  Products.PDBDebugMode.pdblogging.ignore_regexes to ignore_matchers
+  and accept any callable.
 
 0.2 - 2008-05-15
 ----------------
