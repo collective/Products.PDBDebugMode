@@ -9,7 +9,6 @@ from Products.ZCatalog.ZCatalog import ZCatalog
 def catalog_object(self, obj, uid=None, idxs=None,
                     update_metadata=1, pghandler=None):
     """Wrap to do post_mortem debugging on error."""
-    #if 'portal_factory' in uid: pdb.set_trace()
     try:
         return ZCatalog.catalog_object(
             self, obj, uid=uid, idxs=idxs,
