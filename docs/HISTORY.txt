@@ -4,6 +4,12 @@ Changelog
 0.3 - Unreleased
 ----------------
 
+* Use collective.monkeypatcher to move all patches into ZCML
+
+* Fully deprecate the Zope exception handler in favor of the logging
+  hook since the Zope exception handler uses the logging module
+  anyways and more can be done by hooking at that level.
+
 * Handle failed matches in Products.PDBDebugMode.pdblogging more
   gracefully
 
