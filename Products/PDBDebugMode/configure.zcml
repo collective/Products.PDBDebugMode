@@ -15,59 +15,68 @@
      replacement=".pdblogging.error"
      />
 
-  <configure 
-     zcml:condition="installed Products.PlacelessTranslationService.PatchStringIO">
-    <monkey:patch
-       module="ZPublisher.Publish"
-       original="old_publish"
-       replacement=".runcall.pdb_publish"
-     />
-  </configure>
+  <configure zcml:condition="installed ZPublisher.Publish">
 
-  <configure 
-     zcml:condition="not-installed Products.PlacelessTranslationService.PatchStringIO">
-    <monkey:patch
-       module="ZPublisher.Publish"
-       original="publish"
-       replacement=".runcall.pdb_publish"
-     />
-  </configure>
-  
-  <monkey:patch
-     class="Products.ATContentTypes.content.base.ATCTMixin"
-     original="initializeArchetype"
-     replacement=".archetypes.initializeATCT"
-     />
-  
-  <monkey:patch
-     class="Products.Archetypes.ArchetypeTool.ArchetypeTool"
-     original="getCatalogsByType"
-     replacement=".archetypes.getCatalogsByType"
-     />
-  
-  <monkey:patch
-     class="Products.CMFPlone.MigrationTool.MigrationTool"
-     original="upgrade"
-     replacement=".cmfplone.upgrade"
-     />
-  
-  <monkey:patch
-     class="Products.ZCatalog.ZCatalog.ZCatalog"
-     original="catalog_object"
-     replacement=".zcatalog.catalog_object"
-     />
-  
-  <monkey:patch
-     class="Products.ZCatalog.ZCatalog.ZCatalog"
-     original="refreshCatalog"
-     replacement=".zcatalog.refreshCatalog"
-     />
+    <configure 
+       zcml:condition="installed Products.PlacelessTranslationService.PatchStringIO">
+      <monkey:patch
+         module="ZPublisher.Publish"
+         original="old_publish"
+         replacement=".runcall.pdb_publish"
+         />
+    </configure>
 
-  <browser:page
-     name="pdb"
-     for="*"
-     class=".browser.RaiseExceptionView"
-     permission="cmf.ManagePortal"
-     />
+    <configure 
+       zcml:condition="not-installed Products.PlacelessTranslationService.PatchStringIO">
+      <monkey:patch
+         module="ZPublisher.Publish"
+         original="publish"
+         replacement=".runcall.pdb_publish"
+         />
+    </configure>
+    
+    <monkey:patch
+       zcml:condition="installed Products.ATContentTypes.content.base"
+       class="Products.ATContentTypes.content.base.ATCTMixin"
+       original="initializeArchetype"
+       replacement=".archetypes.initializeATCT"
+       />
+    
+    <monkey:patch
+       zcml:condition="installed Products.Archetypes.ArchetypeTool"
+       class="Products.Archetypes.ArchetypeTool.ArchetypeTool"
+       original="getCatalogsByType"
+       replacement=".archetypes.getCatalogsByType"
+       />
+    
+    <monkey:patch
+       zcml:condition="installed Products.CMFPlone.MigrationTool"
+       class="Products.CMFPlone.MigrationTool.MigrationTool"
+       original="upgrade"
+       replacement=".cmfplone.upgrade"
+       />
+    
+    <monkey:patch
+       zcml:condition="installed Products.ZCatalog.ZCatalog"
+       class="Products.ZCatalog.ZCatalog.ZCatalog"
+       original="catalog_object"
+       replacement=".zcatalog.catalog_object"
+       />
+    
+    <monkey:patch
+       zcml:condition="installed Products.ZCatalog.ZCatalog"
+       class="Products.ZCatalog.ZCatalog.ZCatalog"
+       original="refreshCatalog"
+       replacement=".zcatalog.refreshCatalog"
+       />
+
+    <browser:page
+       name="pdb"
+       for="*"
+       class=".browser.RaiseExceptionView"
+       permission="cmf.ManagePortal"
+       />
+
+  </configure>
 
 </configure>
