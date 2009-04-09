@@ -9,6 +9,7 @@ from pdb import post_mortem
 logger = logging.getLogger('Products.PDBDebugMode')
 
 LoggerClass = logging.getLoggerClass()
+orig_error = LoggerClass.error
 
 ignore_matchers = (
     # There's a known error in ZCatalog where deleting a container
@@ -18,9 +19,9 @@ ignore_matchers = (
         'object with a uid of ').search,
     )
 
-def pdberror(self, msg, *args, **kw):
+def error(self, msg, *args, **kw):
     """Drop into pdb when logging an error."""
-    result = LoggerClass.error(self, msg, *args, **kw)
+    result = orig_error(self, msg, *args, **kw)
 
     for matcher in ignore_matchers:
         try:
@@ -40,5 +41,3 @@ def pdberror(self, msg, *args, **kw):
             post_mortem(traceback)
         
     return result
-
-LoggerClass.error = pdberror

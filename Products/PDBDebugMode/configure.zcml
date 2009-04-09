@@ -1,6 +1,67 @@
+<!-- The Globals module is copied to Products.PDBDebugMode.Globals
+     when debug-mode=on to allow ZCML conditions to match -->
 <configure 
    xmlns="http://namespaces.zope.org/zope"
-   xmlns:browser="http://namespaces.zope.org/browser">
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   xmlns:monkey="http://namespaces.plone.org/monkey"
+   zcml:condition="installed Products.PDBDebugMode.Globals">
+  
+  <include package="collective.monkeypatcher" file="meta.zcml" />
+  
+  <monkey:patch
+     class="Products.PDBDebugMode.pdblogging.LoggerClass"
+     original="error"
+     replacement=".pdblogging.error"
+     />
+
+  <configure 
+     zcml:condition="installed Products.PlacelessTranslationService.PatchStringIO">
+    <monkey:patch
+       module="ZPublisher.Publish"
+       original="old_publish"
+       replacement=".runcall.pdb_publish"
+     />
+  </configure>
+
+  <configure 
+     zcml:condition="not-installed Products.PlacelessTranslationService.PatchStringIO">
+    <monkey:patch
+       module="ZPublisher.Publish"
+       original="publish"
+       replacement=".runcall.pdb_publish"
+     />
+  </configure>
+  
+  <monkey:patch
+     class="Products.ATContentTypes.content.base.ATCTMixin"
+     original="initializeArchetype"
+     replacement=".archetypes.initializeATCT"
+     />
+  
+  <monkey:patch
+     class="Products.Archetypes.ArchetypeTool.ArchetypeTool"
+     original="getCatalogsByType"
+     replacement=".archetypes.getCatalogsByType"
+     />
+  
+  <monkey:patch
+     class="Products.CMFPlone.MigrationTool.MigrationTool"
+     original="upgrade"
+     replacement=".cmfplone.upgrade"
+     />
+  
+  <monkey:patch
+     class="Products.ZCatalog.ZCatalog.ZCatalog"
+     original="catalog_object"
+     replacement=".zcatalog.catalog_object"
+     />
+  
+  <monkey:patch
+     class="Products.ZCatalog.ZCatalog.ZCatalog"
+     original="refreshCatalog"
+     replacement=".zcatalog.refreshCatalog"
+     />
 
   <browser:page
      name="pdb"

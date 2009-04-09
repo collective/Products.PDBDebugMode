@@ -3,8 +3,6 @@ want to debug."""
 
 from Products.CMFCore.utils import getToolByName
 
-from Products.Archetypes.BaseObject import BaseObject
-
 def initializeArchetype(self, **kwargs):
     """Don't swallow errors on AT content creation."""
     self.initializeLayers()
@@ -15,9 +13,16 @@ def initializeArchetype(self, **kwargs):
         self.edit(**kwargs)
     self._signature = self.Schema().signature()
 
-BaseObject.initializeArchetype = initializeArchetype
-
-from Products.Archetypes.ArchetypeTool import ArchetypeTool
+def initializeATCT(self, **kwargs):
+    """Don't swallow errors on ATCT content creation."""
+    self.initializeLayers()
+    self.markCreationFlag()
+    self.setDefaults()
+    if kwargs:
+        self.edit(**kwargs)
+    self._signature = self.Schema().signature()
+    if self.isPrincipiaFolderish:
+        self.copyLayoutFromParent()
 
 def getCatalogsByType(self, portal_type):
     """Don't swallow catalog access errors."""
@@ -30,5 +35,3 @@ def getCatalogsByType(self, portal_type):
     for name in names:
         catalogs.append(getToolByName(self, name))
     return catalogs
-        
-ArchetypeTool.getCatalogsByType = getCatalogsByType
