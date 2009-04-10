@@ -7,6 +7,8 @@ Changelog
 * Add collective.monkeypatcher as a requirement
   [kdeldycke] 2009-04-09
 
+* Fix some recursion errors
+
 0.3 - 2009-04-08
 ----------------
 

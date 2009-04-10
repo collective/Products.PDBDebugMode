@@ -6,11 +6,13 @@ import pdb
 
 from Products.ZCatalog.ZCatalog import ZCatalog
 
+orig_catalog_object = ZCatalog.catalog_object
+
 def catalog_object(self, obj, uid=None, idxs=None,
                     update_metadata=1, pghandler=None):
     """Wrap to do post_mortem debugging on error."""
     try:
-        return ZCatalog.catalog_object(
+        return orig_catalog_object(
             self, obj, uid=uid, idxs=idxs,
             update_metadata=update_metadata, pghandler=pghandler)
     except:
