@@ -32,12 +32,10 @@ def error(self, msg, *args, **kw):
         if match:
             break
     else:
-        type, value, traceback = sys.exc_info()
-        if traceback is None:
-            set_trace()
-        else:
-            # When the logger is invoked inside a try block, do
-            # post_mortem debugging on the error
+        if kw.get('exc_info'):
+            type, value, traceback = sys.exc_info()
             post_mortem(traceback)
+        else:
+            set_trace()
         
     return result
