@@ -15,6 +15,12 @@
      replacement=".pdblogging.error"
      />
 
+  <monkey:patch
+     zcml:condition="installed Products.SiteErrorLog.SiteErrorLog"
+     class="Products.SiteErrorLog.SiteErrorLog.SiteErrorLog"
+     original="raising"
+     replacement=".errorlog.raising" />
+
   <configure zcml:condition="installed ZPublisher.Publish">
 
     <configure 
@@ -23,6 +29,7 @@
          module="ZPublisher.Publish"
          original="old_publish"
          replacement=".runcall.pdb_publish"
+         docstringWarning="False"
          />
     </configure>
 
