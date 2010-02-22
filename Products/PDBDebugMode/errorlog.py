@@ -13,6 +13,7 @@ def raising(self, info):
             SiteErrorLog.LOG, msg, *args, **kw)
     SiteErrorLog.LOG.error = error
     result = orig_raising(self, info)
-    pdb.post_mortem(info[2])
+    if result:
+        pdb.post_mortem(info[2])
     del SiteErrorLog.LOG.error
     return result
