@@ -29,8 +29,9 @@ def error(self, msg, *args, **kw):
         except:
             logger.exception('Matcher %r failed for log message %r' %
                              (matcher, msg))
-        if match:
-            break
+        else:
+            if match:
+                break
     else:
         if kw.get('exc_info'):
             type, value, traceback = sys.exc_info()
