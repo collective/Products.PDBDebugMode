@@ -4,6 +4,8 @@ Changelog
 1.2 - Unreleased
 ----------------
 
+* Fix handling of socket errors
+
 * Fix handling of SiteErrorLog tracebacks
 
 * Fix handling of exc_info logging arg

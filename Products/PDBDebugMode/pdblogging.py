@@ -23,15 +23,15 @@ def error(self, msg, *args, **kw):
     """Drop into pdb when logging an error."""
     result = orig_error(self, msg, *args, **kw)
 
+    if not isinstance(msg, basestring):
+        msg = str(msg)
+
     for matcher in ignore_matchers:
         try:
             match = matcher(msg)
         except:
             logger.exception('Matcher %r failed for log message %r' %
                              (matcher, msg))
-        else:
-            if match:
-                break
     else:
         if kw.get('exc_info'):
             type, value, traceback = sys.exc_info()
