@@ -1,8 +1,18 @@
 Changelog
 =========
 
-1.2 - Unreleased
+1.2 - 2011-01-07
 ----------------
+
+* Add some zopectl scripts I use when evaluating upgrades.
+  [rossp]
+
+* Better handling of exceptions while checking error matching.
+  [rossp]
+
+* Fix a problem with doing post_mortem debugging of error_log ignored
+  exceptions.
+  [rossp]
 
 * Fix handling of socket errors
 
