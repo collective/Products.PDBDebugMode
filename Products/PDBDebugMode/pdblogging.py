@@ -3,8 +3,12 @@
 import sys
 import re
 import logging
-from pdb import set_trace
-from pdb import post_mortem
+try:
+    from ipdb import set_trace
+    from ipdb import post_mortem
+except:
+    from pdb import set_trace
+    from pdb import post_mortem
 
 logger = logging.getLogger('Products.PDBDebugMode')
 

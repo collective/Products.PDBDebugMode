@@ -1,5 +1,5 @@
 """If debug-mode=on, Monkey-patch the zpublisher_exception_hook to
-call pdb.post_mortem on an error and enable import of pdb in
+call pdb.post_mortem on an error and enable import of pdb (and ipdb) in
 unprotected code.
 """
 
@@ -13,3 +13,4 @@ if Globals.DevelopmentMode:
 
     # Allow import of pdb in unprotected code
     AccessControl.allow_module('pdb')
+    AccessControl.allow_module('ipdb')
