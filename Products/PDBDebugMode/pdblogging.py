@@ -21,6 +21,11 @@ ignore_matchers = (
     re.compile(
         '^uncatalogObject unsuccessfully attempted to uncatalog an '
         'object with a uid of ').search,
+    # Ignore broken GenericSetup handlers
+    re.compile(
+        '^Step .* has an invalid import handler$').search,
+    re.compile(
+        '^Step .* has an invalid export handler$').search,
     )
 
 def error(self, msg, *args, **kw):
