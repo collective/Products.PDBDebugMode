@@ -2,7 +2,10 @@
 might want to debug."""
 
 import sys
-import pdb
+try:
+    import ipdb
+except:
+    import pdb
 
 from Products.ZCatalog.ZCatalog import ZCatalog
 

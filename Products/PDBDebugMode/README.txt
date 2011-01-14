@@ -16,6 +16,9 @@ Requirements
 PDBDebugMode has been tested with Zope 2.8.5 and 2.10 but may well
 work with other versions.
 
+If ipdb (http://pypi.python.org/pypi/ipdb) is available, it will use that
+instead of standard pdb.
+
 Its recommended that you use an editor or IDE that can cooperate with
 pdb. Emacs for example, will display the corresponding lines of the
 source file alongside the pdb prompt.
