@@ -4,6 +4,12 @@ Changelog
 1.3 - Unreleased
 ----------------
 
+* Ignore invalid GenericSetup handlers.
+  [rossp]
+
+* Use ipdb when available.
+  [neaj]
+
 1.2 - 2011-01-07
 ----------------
 
