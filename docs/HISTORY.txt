@@ -4,6 +4,10 @@ Changelog
 1.4 - Unreleased
 ----------------
 
+* Apparently the ipdb support only works with ipdb 0.3 or greater.
+  Added an "ipdb" extra for this requirement.
+  [rossp]
+
 1.3 - 2011-01-14
 ----------------
 

@@ -29,6 +29,7 @@ setup(name='Products.PDBDebugMode',
           'collective.monkeypatcher',
           # -*- Extra requirements: -*-
       ],
+      extras_require={'ipdb': ['ipdb>=0.3']},
       entry_points="""
       # -*- Entry points: -*-
       """,
