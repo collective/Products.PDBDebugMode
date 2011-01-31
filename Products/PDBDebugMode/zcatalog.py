@@ -3,7 +3,7 @@ might want to debug."""
 
 import sys
 try:
-    import ipdb
+    import ipdb as pdb
 except:
     import pdb
 
