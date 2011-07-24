@@ -8,6 +8,8 @@
    zcml:condition="installed Products.PDBDebugMode.Globals">
   
   <include package="collective.monkeypatcher" file="meta.zcml" />
+
+  <include file="zodb.zcml" />
   
   <monkey:patch
      class="Products.PDBDebugMode.pdblogging.LoggerClass"
