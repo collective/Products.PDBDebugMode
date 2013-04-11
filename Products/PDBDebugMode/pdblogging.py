@@ -28,6 +28,7 @@ ignore_matchers = (
         '^Step .* has an invalid export handler$').search,
     )
 
+
 def error(self, msg, *args, **kw):
     """Drop into pdb when logging an error."""
     result = orig_error(self, msg, *args, **kw)

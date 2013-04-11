@@ -14,7 +14,7 @@ def register(self, obj):
     the change resulting in the PicklingError.
     """
     orig_register(self, obj)
-    
+
     from zope.testing.testrunner import options
     if options.get_options().post_mortem:
         writer = ObjectWriter(obj)

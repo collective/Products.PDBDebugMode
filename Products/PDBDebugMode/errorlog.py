@@ -9,6 +9,7 @@ from Products.PDBDebugMode import pdblogging
 
 orig_raising = SiteErrorLog.SiteErrorLog.raising
 
+
 def raising(self, info):
     """Catch the traceback and bypass pdblogging"""
     def error(msg, *args, **kw):

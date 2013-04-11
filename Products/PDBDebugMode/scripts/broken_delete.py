@@ -20,5 +20,5 @@ for path, obj in app.ZopeFind(app, search_sub=True,
     except:
         import pdb, sys; pdb.post_mortem(sys.exc_info()[2])
         raise
-                
+
 transaction.commit()

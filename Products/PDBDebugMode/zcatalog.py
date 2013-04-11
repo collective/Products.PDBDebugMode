@@ -11,6 +11,7 @@ from Products.ZCatalog.ZCatalog import ZCatalog
 
 orig_catalog_object = ZCatalog.catalog_object
 
+
 def catalog_object(self, obj, uid=None, idxs=None,
                     update_metadata=1, pghandler=None):
     """Wrap to do post_mortem debugging on error."""
@@ -23,6 +24,7 @@ def catalog_object(self, obj, uid=None, idxs=None,
         pdb.post_mortem(tb)
         raise
 
+
 def refreshCatalog(self, clear=0, pghandler=None):
     """Don't swallow errors on object indexing errors."""
 
@@ -34,10 +36,12 @@ def refreshCatalog(self, clear=0, pghandler=None):
 
     num_objects = len(paths)
     if pghandler:
-        pghandler.init('Refreshing catalog: %s' % self.absolute_url(1), num_objects)
+        pghandler.init(
+            'Refreshing catalog: %s' % self.absolute_url(1), num_objects)
 
     for i in xrange(num_objects):
-        if pghandler: pghandler.report(i)
+        if pghandler:
+            pghandler.report(i)
 
         p = paths[i]
         obj = self.resolve_path(p)
@@ -46,4 +50,5 @@ def refreshCatalog(self, clear=0, pghandler=None):
         if obj is not None:
             self.catalog_object(obj, p, pghandler=pghandler)
 
-    if pghandler: pghandler.finish()
+    if pghandler:
+        pghandler.finish()
