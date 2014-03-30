@@ -26,6 +26,8 @@ ignore_matchers = (
         '^Step .* has an invalid import handler$').search,
     re.compile(
         '^Step .* has an invalid export handler$').search,
+    re.compile(
+        '^Cannot reload .*$').search,
     )
 
 def error(self, msg, *args, **kw):
@@ -50,5 +52,5 @@ def error(self, msg, *args, **kw):
             post_mortem(traceback)
         else:
             set_trace()
-        
+
     return result
