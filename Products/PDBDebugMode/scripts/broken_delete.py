@@ -1,3 +1,8 @@
+try:
+    import ipdb as pdb
+except:
+    import pdb
+
 import transaction
 from AccessControl import SecurityManagement
 
@@ -18,7 +23,9 @@ for path, obj in app.ZopeFind(app, search_sub=True,
             if container.manage_delObjects is not None:
                 container.manage_delObjects([broken_id])
     except:
-        import pdb, sys; pdb.post_mortem(sys.exc_info()[2])
+        import pdb
+        import sys
+        pdb.post_mortem(sys.exc_info()[2])
         raise
 
 transaction.commit()

@@ -4,6 +4,9 @@ Changelog
 1.3.1 - Unreleased
 ------------------
 
+* Add some missing iPython support for runcall and broken_delete.
+  [rpatterson]
+
 * Apparently the ipdb support only works with ipdb 0.3 or greater.
   Added an "ipdb" extra for this requirement.
   [rossp]
