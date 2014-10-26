@@ -1,6 +1,8 @@
 <configure
    xmlns="http://namespaces.zope.org/zope"
-   xmlns:monkey="http://namespaces.plone.org/monkey">
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   xmlns:monkey="http://namespaces.plone.org/monkey"
+   zcml:condition="installed Products.PDBDebugMode.Globals">
 
   <include package="collective.monkeypatcher" file="meta.zcml" />
 
