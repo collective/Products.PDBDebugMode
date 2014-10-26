@@ -8,7 +8,7 @@ Enable various PDB debugging when debug-mode=on
 
 When Zope is running in debug mode this product hooks PDB debugging
 into various parts of a Zope instance.  Some additional Plone specific
-hooks are also included.  
+hooks are also included.
 
 Requirements
 ------------

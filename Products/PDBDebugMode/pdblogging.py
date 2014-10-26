@@ -51,5 +51,5 @@ def error(self, msg, *args, **kw):
             post_mortem(traceback)
         else:
             set_trace()
-        
+
     return result

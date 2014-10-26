@@ -1,9 +1,9 @@
-<configure 
+<configure
    xmlns="http://namespaces.zope.org/zope"
    xmlns:monkey="http://namespaces.plone.org/monkey">
-  
+
   <include package="collective.monkeypatcher" file="meta.zcml" />
-  
+
   <monkey:patch
      class="ZODB.Connection.Connection"
      original="register"
