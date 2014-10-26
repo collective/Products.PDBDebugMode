@@ -26,7 +26,7 @@ ignore_matchers = (
         '^Step .* has an invalid import handler$').search,
     re.compile(
         '^Step .* has an invalid export handler$').search,
-    )
+)
 
 
 def error(self, msg, *args, **kw):

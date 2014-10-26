@@ -78,8 +78,9 @@ def pdb_publish(request, module_name, after_list, debug=0,
                 mapply=Publish.mapply, ):
     """Hook the publish function to override the function used to call
     the result of the request traversal."""
-    return real_publish(request, module_name, after_list, debug=0,
-                call_object=call_object,
-                missing_name=missing_name,
-                dont_publish_class=dont_publish_class,
-                mapply=mapply, )
+    return real_publish(
+        request, module_name, after_list, debug=0,
+        call_object=call_object,
+        missing_name=missing_name,
+        dont_publish_class=dont_publish_class,
+        mapply=mapply, )

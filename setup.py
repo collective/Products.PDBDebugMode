@@ -8,13 +8,14 @@ setup(name='Products.PDBDebugMode',
       description="Post-mortem debugging on Zope 2 excpetions",
       long_description=open(
           os.path.join("Products", "PDBDebugMode", "README.txt")
-          ).read() + "\n" + open(
+      ).read() + "\n" + open(
           os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      # Get more strings from
+      # http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+          "Programming Language :: Python",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+      ],
       keywords='',
       author='Ross Patterson',
       author_email='me@rpatterson.net',
