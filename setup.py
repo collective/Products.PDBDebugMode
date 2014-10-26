@@ -30,7 +30,11 @@ setup(name='Products.PDBDebugMode',
           'collective.monkeypatcher',
           # -*- Extra requirements: -*-
       ],
-      extras_require={'ipdb': ['ipdb>=0.3']},
+      extras_require={
+          'ipdb': ['ipdb>=0.3'],
+          'zodb': ['zope.testrunner'],
+          'zodb-testing': ['zope.testing'],
+      },
       entry_points="""
       # -*- Entry points: -*-
       """,

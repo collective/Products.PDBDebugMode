@@ -1,3 +1,9 @@
+try:
+    from zope.testrunner import options
+except ImportError:
+    from zope.testing.testrunner import options
+
+
 from ZODB import Connection
 from ZODB.serialize import ObjectWriter
 
@@ -12,10 +18,12 @@ def register(self, obj):
     transaction as opposed to when the transaction is committed.
     Under pdb, for example, this allows inspecting the code that made
     the change resulting in the PicklingError.
+
+    Requires either zope.testrunner or zope.testing which can be included using
+    the 'zodb' or 'zodb-testing' extras respectively.
     """
     orig_register(self, obj)
 
-    from zope.testing.testrunner import options
     if options.get_options().post_mortem:
         writer = ObjectWriter(obj)
 
