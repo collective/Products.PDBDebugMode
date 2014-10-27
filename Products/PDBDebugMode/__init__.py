@@ -8,9 +8,13 @@ import sys
 import Globals
 import AccessControl
 
-if Globals.DevelopmentMode:
+from Products.PDBDebugMode import debugger
+
+if debugger.is_enabled():
     sys.modules['Products.PDBDebugMode.Globals'] = Globals
 
     # Allow import of pdb in unprotected code
     AccessControl.allow_module('pdb')
     AccessControl.allow_module('ipdb')
+
+    AccessControl.allow_module('Products.PDBDebugMode.debugger')

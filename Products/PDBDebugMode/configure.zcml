@@ -5,9 +5,7 @@
    xmlns:zcml="http://namespaces.zope.org/zcml"
    xmlns:browser="http://namespaces.zope.org/browser"
    xmlns:monkey="http://namespaces.plone.org/monkey"
-   zcml:condition="installed Products.PDBDebugMode.Globals">
-
-  <include package="collective.monkeypatcher" file="meta.zcml" />
+   zcml:condition="have zope2-debug-mode">
 
   <include file="zodb.zcml" />
 
