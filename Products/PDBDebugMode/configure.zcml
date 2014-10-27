@@ -1,5 +1,3 @@
-<!-- The Globals module is copied to Products.PDBDebugMode.Globals
-     when debug-mode=on to allow ZCML conditions to match -->
 <configure
    xmlns="http://namespaces.zope.org/zope"
    xmlns:zcml="http://namespaces.zope.org/zcml"
