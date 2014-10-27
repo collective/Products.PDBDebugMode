@@ -35,7 +35,8 @@ setup(name='Products.PDBDebugMode',
           'zodb': ['zope.testrunner'],
           'zodb-testing': ['zope.testing'],
       },
-      entry_points="""
+      entry_points={
       # -*- Entry points: -*-
-      """,
+          'z3c.autoinclude.plugin': 'target = plone',
+      },
       )
