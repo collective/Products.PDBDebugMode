@@ -3,16 +3,9 @@ try:
 except:
     import pdb
 
-from ZPublisher import Publish
+from ZServer.ZPublisher import Publish
 
-try:
-    # XXX Check for PlacelessTranslationService monkeypatch
-    from Products.PlacelessTranslationService import PatchStringIO
-    PatchStringIO  # pyflakes
-except ImportError:
-    real_publish = Publish.publish
-else:
-    real_publish = Publish.old_publish
+real_publish = Publish.publish
 
 
 def resolveDottedName(dotted_name):

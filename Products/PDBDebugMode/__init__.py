@@ -4,14 +4,14 @@ unprotected code.
 """
 
 import sys
-
-import Globals
+import new
 import AccessControl
 
 from Products.PDBDebugMode import debugger
 
 if debugger.is_enabled():
-    sys.modules['Products.PDBDebugMode.Globals'] = Globals
+    enabled = new.module('enabled')
+    sys.modules['Products.PDBDebugMode.enabled'] = enabled
 
     # Allow import of pdb in unprotected code
     AccessControl.allow_module('pdb')

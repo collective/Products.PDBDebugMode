@@ -22,7 +22,7 @@
     <configure
        zcml:condition="installed Products.PlacelessTranslationService.PatchStringIO">
       <monkey:patch
-         module="ZPublisher.Publish"
+         module="ZServer.ZPublisher.Publish"
          original="old_publish"
          replacement=".runcall.pdb_publish"
          docstringWarning="False"
@@ -32,7 +32,7 @@
     <configure
        zcml:condition="not-installed Products.PlacelessTranslationService.PatchStringIO">
       <monkey:patch
-         module="ZPublisher.Publish"
+         module="ZServer.ZPublisher.Publish"
          original="publish"
          replacement=".runcall.pdb_publish"
          docstringWarning="False"

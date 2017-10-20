@@ -4,9 +4,9 @@
     xmlns:meta="http://namespaces.zope.org/meta">
 
   <meta:provides
-      zcml:condition="installed Products.PDBDebugMode.Globals"
+      zcml:condition="installed Products.PDBDebugMode.enabled"
       feature="zope2-debug-mode" />
-  
+
   <include package="collective.monkeypatcher" file="meta.zcml" />
 
 </configure>
