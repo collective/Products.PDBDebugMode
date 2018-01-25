@@ -3,7 +3,11 @@ try:
 except:
     import pdb
 
-from ZServer.ZPublisher import Publish
+try:
+    from ZServer.ZPublisher import Publish
+except ImportError:
+    # pre Zope 4
+    from ZPublisher import Publish
 
 real_publish = Publish.publish
 
