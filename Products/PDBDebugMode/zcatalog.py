@@ -9,6 +9,9 @@ except:
 
 from Products.ZCatalog.ZCatalog import ZCatalog
 
+from six.moves import range
+
+
 orig_catalog_object = ZCatalog.catalog_object
 
 
@@ -29,7 +32,7 @@ def refreshCatalog(self, clear=0, pghandler=None):
     """Don't swallow errors on object indexing errors."""
 
     cat = self._catalog
-    paths = cat.paths.values()
+    paths = list(cat.paths.values())
     if clear:
         paths = tuple(paths)
         cat.clear()
@@ -39,7 +42,7 @@ def refreshCatalog(self, clear=0, pghandler=None):
         pghandler.init(
             'Refreshing catalog: %s' % self.absolute_url(1), num_objects)
 
-    for i in xrange(num_objects):
+    for i in range(num_objects):
         if pghandler:
             pghandler.report(i)
 

@@ -24,6 +24,9 @@ Changelog
 * Make compatible with Zope4.
   [pbauer]
 
+* Prepare for Python 2 / 3 compatibility
+  [frapell]
+
 1.3 - 2011-01-14
 ----------------
 

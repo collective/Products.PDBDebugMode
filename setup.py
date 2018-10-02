@@ -29,6 +29,7 @@ setup(name='Products.PDBDebugMode',
           'setuptools',
           'collective.monkeypatcher',
           # -*- Extra requirements: -*-
+          'six',
       ],
       extras_require={
           'ipdb': ['ipdb>=0.3'],
