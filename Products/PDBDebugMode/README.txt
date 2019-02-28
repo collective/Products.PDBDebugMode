@@ -13,8 +13,10 @@ hooks are also included.
 Requirements
 ------------
 
-PDBDebugMode has been tested with Zope 2.8.5 and 2.10 but may well
-work with other versions.
+This version of PDBDebugMode has been tested with Zope4 and Plone 5.2 in
+Python 2.7, 3.6 and 3.7
+
+For Zope 2 (until Plone 5.1) please use `Products.PDBDebugMode = 1.3`.
 
 If ipdb (http://pypi.python.org/pypi/ipdb) is available, it will use that
 instead of standard pdb.
