@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3.1'
+version = '1.4.dev0'
 
 setup(name='Products.PDBDebugMode',
       version=version,
@@ -37,7 +37,7 @@ setup(name='Products.PDBDebugMode',
           'zodb-testing': ['zope.testing'],
       },
       entry_points={
-      # -*- Entry points: -*-
+          # -*- Entry points: -*-
           'z3c.autoinclude.plugin': 'target = plone',
       },
       )
