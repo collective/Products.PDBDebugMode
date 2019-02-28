@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3.1'
+version = '1.4.dev0'
 
 setup(name='Products.PDBDebugMode',
       version=version,
-      description="Post-mortem debugging on Zope 2 excpetions",
+      description="Post-mortem debugging on Zope exceptions",
       long_description=open(
           os.path.join("Products", "PDBDebugMode", "README.txt")
       ).read() + "\n" + open(
@@ -13,8 +13,16 @@ setup(name='Products.PDBDebugMode',
       # Get more strings from
       # http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-          "Programming Language :: Python",
+          "Environment :: Web Environment",
           "Topic :: Software Development :: Libraries :: Python Modules",
+          "Framework :: Plone",
+          "Framework :: Plone :: 5.2",
+          "Framework :: Zope :: 4",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 3.6",
+          "Programming Language :: Python :: 3.7",
       ],
       keywords='',
       author='Ross Patterson',
@@ -29,6 +37,7 @@ setup(name='Products.PDBDebugMode',
           'setuptools',
           'collective.monkeypatcher',
           # -*- Extra requirements: -*-
+          'six',
       ],
       extras_require={
           'ipdb': ['ipdb>=0.3'],
@@ -36,7 +45,7 @@ setup(name='Products.PDBDebugMode',
           'zodb-testing': ['zope.testing'],
       },
       entry_points={
-      # -*- Entry points: -*-
+          # -*- Entry points: -*-
           'z3c.autoinclude.plugin': 'target = plone',
       },
       )

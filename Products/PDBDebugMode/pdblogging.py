@@ -3,6 +3,10 @@
 import sys
 import re
 import logging
+
+import six
+
+
 try:
     from ipdb import set_trace
     from ipdb import post_mortem
@@ -33,7 +37,7 @@ def error(self, msg, *args, **kw):
     """Drop into pdb when logging an error."""
     result = orig_error(self, msg, *args, **kw)
 
-    if not isinstance(msg, basestring):
+    if not isinstance(msg, six.string_types):
         msg = str(msg)
 
     for matcher in ignore_matchers:
