@@ -2,7 +2,7 @@
    xmlns="http://namespaces.zope.org/zope"
    xmlns:zcml="http://namespaces.zope.org/zcml"
    xmlns:monkey="http://namespaces.plone.org/monkey"
-   zcml:condition="have zope2-debug-mode">
+   zcml:condition="have zope-debug-mode">
 
   <monkey:patch
      class="ZODB.Connection.Connection"

@@ -3,14 +3,6 @@ try:
 except:
     import pdb
 
-try:
-    from ZServer.ZPublisher import Publish
-except:
-    # pre Zope 4
-    from ZPublisher import Publish
-
-real_publish = Publish.publish
-
 
 def resolveDottedName(dotted_name):
     """Resolve the dotted name importing as necessary then using
@@ -31,7 +23,7 @@ def resolveDottedName(dotted_name):
     return obj
 
 
-def pdb_runcall(object, args, request):
+def pdb_runcall(obj, args, request):
     """If the request has the pdb_runcall key then we run the result
     of request traversal in the debugger.  Othwise, do it normally.
 
@@ -43,7 +35,7 @@ def pdb_runcall(object, args, request):
         runcall_cookie = request.cookies.get('pdb_runcall', False)
         if runcall_cookie:
             response.expireCookie('pdb_runcall')
-            return Publish.call_object(object, args, request)
+            return obj(*args)
         else:
             response.setCookie('pdb_runcall', 1)
 
@@ -60,24 +52,9 @@ def pdb_runcall(object, args, request):
             if ignores:
                 ignores = ignores.split(':')
             for ignore in ignores:
-                obj = resolveDottedName(ignore)
-                if obj.__func__ is getattr(object, 'im_func', None):
+                _obj = resolveDottedName(ignore)
+                if _obj.__func__ is getattr(obj, 'im_func', None):
                     break
             else:
-                return pdb.runcall(object, *args)
-    return Publish.call_object(object, args, request)
-
-
-def pdb_publish(request, module_name, after_list, debug=0,
-                call_object=pdb_runcall,
-                missing_name=Publish.missing_name,
-                dont_publish_class=Publish.dont_publish_class,
-                mapply=Publish.mapply, ):
-    """Hook the publish function to override the function used to call
-    the result of the request traversal."""
-    return real_publish(
-        request, module_name, after_list, debug=0,
-        call_object=call_object,
-        missing_name=missing_name,
-        dont_publish_class=dont_publish_class,
-        mapply=mapply, )
+                return pdb.runcall(obj, *args)
+    return obj(*args)

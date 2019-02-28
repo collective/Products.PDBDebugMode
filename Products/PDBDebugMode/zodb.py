@@ -21,7 +21,7 @@ def register(self, obj):
     writer = ObjectWriter(obj)
 
     # Replace the pickler so that it doesn't set oids
-    import cPickle as pickle
+    import six.moves.cPickle as pickle
     writer._p = pickle.Pickler(writer._file, 1)
 
     # Try to serialize to raise piclkling errors early

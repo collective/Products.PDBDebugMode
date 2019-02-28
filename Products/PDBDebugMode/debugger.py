@@ -17,7 +17,7 @@ def is_enabled():
         from zope.testing import testrunner
         from zope.testing.testrunner import options
     frame = sys._getframe(2)
-    while frame is not None and frame.f_code is not testrunner.run.func_code:
+    while frame is not None and frame.f_code is not testrunner.run.__code__:
         frame = frame.f_back
     if frame is not None:
         try:

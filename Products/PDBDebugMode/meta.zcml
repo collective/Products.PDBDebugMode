@@ -3,9 +3,19 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:meta="http://namespaces.zope.org/meta">
 
-  <meta:provides
-      zcml:condition="installed Products.PDBDebugMode.enabled"
-      feature="zope2-debug-mode" />
+  <configure zcml:condition="installed Products.PDBDebugMode.z2_enabled">
+    <meta:provides
+        feature="zope-debug-mode" />
+    <meta:provides
+        feature="zope2-debug-mode" />
+  </configure>
+
+  <configure zcml:condition="installed Products.PDBDebugMode.z4_enabled">
+    <meta:provides
+        feature="zope-debug-mode" />
+    <meta:provides
+        feature="zope4-debug-mode" />
+  </configure>
 
   <include package="collective.monkeypatcher" file="meta.zcml" />
 
