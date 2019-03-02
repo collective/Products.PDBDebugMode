@@ -6,9 +6,7 @@ version = '1.4.dev0'
 setup(name='Products.PDBDebugMode',
       version=version,
       description="Post-mortem debugging on Zope exceptions",
-      long_description=open(
-          os.path.join("Products", "PDBDebugMode", "README.txt")
-      ).read() + "\n" + open(
+      long_description=open("README.txt").read() + "\n" + open(
           os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://www.python.org/pypi?%3Aaction=list_classifiers
