@@ -1,0 +1,5 @@
+recursive-include Products *.py
+recursive-include Products *.txt
+recursive-include Products *.zcml
+recursive-include docs *.GPL
+recursive-include docs *.txt
