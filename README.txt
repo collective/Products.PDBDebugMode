@@ -1,5 +1,3 @@
-.. -*-doctest-*-
-
 ===============================================
 Products.PDBDebugMode
 ===============================================
@@ -26,7 +24,7 @@ pdb. Emacs for example, will display the corresponding lines of the
 source file alongside the pdb prompt.
 
 Remember that this product does nothing unless zope is being run with
-debug-mode=on such as with "instance/bin/zopectl fg"
+debug-mode=on such as with "./bin/instance fg"
 
 Post-Mortem Debugging
 ---------------------
@@ -53,9 +51,12 @@ pdb.runcall when the POST is submitted.  Use '?toggle_runcall=1' at
 the end of a URL to clear the cookie.  Remember that the cookie will
 be set at the level in the hierarchy that it was set.
 
-Alternatively, a view named 'pdb' is registered for all objects that
+Debug View
+----------
+
+Additionaly, a view named 'pdb' is registered for all objects that
 will simply raise an exception leaving you with the current context to
-inspect.
+inspect. Use it for example by calling http://localhost:8080/Plone/foo/@@pdb.
 
 Allow Import of pdb
 -------------------
