@@ -1,13 +1,10 @@
+# -*- coding: utf-8 -*-
 try:
     import ipdb as pdb
-except:
+except ImportError:
     import pdb
 
-try:
-    from ZServer.ZPublisher import Publish
-except:
-    # pre Zope 4
-    from ZPublisher import Publish
+from ZServer.ZPublisher import Publish
 
 real_publish = Publish.publish
 

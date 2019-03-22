@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 try:
     import ipdb as pdb
-except:
+except ImportError:
     import pdb
 
 from Products.SiteErrorLog import SiteErrorLog
