@@ -1,30 +1,8 @@
-import sys
-
-
+# -*- coding: utf-8 -*-
 def is_enabled():
     try:
         from App.config import getConfiguration
         debug_mode = getConfiguration().debug_mode
-    except:
+    except Exception:
         debug_mode = False
-    if debug_mode:
-        return True
-
-    try:
-        from zope import testrunner
-        from zope.testrunner import options
-    except ImportError:
-        from zope.testing import testrunner
-        from zope.testing.testrunner import options
-    frame = sys._getframe(2)
-    while frame is not None and frame.f_code is not testrunner.run.__code__:
-        frame = frame.f_back
-    if frame is not None:
-        try:
-            pm = options.get_options().post_mortem
-            return bool(pm)
-        except:
-            # options not recognized by test runnergiven
-            pass
-
-    return False
+    return debug_mode

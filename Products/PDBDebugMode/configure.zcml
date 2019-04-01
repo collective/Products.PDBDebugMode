@@ -5,75 +5,24 @@
    xmlns:monkey="http://namespaces.plone.org/monkey"
    zcml:condition="have zope-debug-mode">
 
-  <monkey:patch
-     class="Products.PDBDebugMode.pdblogging.LoggerClass"
-     original="error"
-     replacement=".pdblogging.error"
-     />
+    <monkey:patch
+       class="Products.PDBDebugMode.pdblogging.LoggerClass"
+       original="error"
+       replacement=".pdblogging.error"
+       />
 
-  <monkey:patch
-     zcml:condition="installed Products.SiteErrorLog.SiteErrorLog"
-     class="Products.SiteErrorLog.SiteErrorLog.SiteErrorLog"
-     original="raising"
-     replacement=".errorlog.raising" />
+    <monkey:patch
+       zcml:condition="installed Products.SiteErrorLog.SiteErrorLog"
+       class="Products.SiteErrorLog.SiteErrorLog.SiteErrorLog"
+       original="raising"
+       replacement=".errorlog.raising" />
 
-  <configure zcml:condition="have zope4-debug-mode">
-      <configure>
-        <monkey:patch
-           module="ZPublisher.WSGIPublisher"
-           original="call_object"
-           replacement=".wsgi_runcall.pdb_runcall"
-           docstringWarning="False"
-           />
-      </configure>
-  </configure>
-
-  <configure zcml:condition="have zope2-debug-mode">
-    <configure zcml:condition="installed ZServer">
-
-      <configure
-        zcml:condition="installed Products.PlacelessTranslationService.PatchStringIO">
-        <monkey:patch
-           module="ZServer.ZPublisher.Publish"
-           original="old_publish"
-           replacement=".runcall.pdb_publish"
-           docstringWarning="False"
-           />
-      </configure>
-
-      <configure
-        zcml:condition="not-installed Products.PlacelessTranslationService.PatchStringIO">
-        <monkey:patch
-           module="ZServer.ZPublisher.Publish"
-           original="publish"
-           replacement=".runcall.pdb_publish"
-           docstringWarning="False"
-           />
-      </configure>
-    </configure>
-    <configure zcml:condition="not-installed ZServer">
-
-      <configure
-        zcml:condition="installed Products.PlacelessTranslationService.PatchStringIO">
-        <monkey:patch
-           module="ZPublisher.Publish"
-           original="old_publish"
-           replacement=".runcall.pdb_publish"
-           docstringWarning="False"
-           />
-      </configure>
-
-      <configure
-        zcml:condition="not-installed Products.PlacelessTranslationService.PatchStringIO">
-        <monkey:patch
-           module="ZPublisher.Publish"
-           original="publish"
-           replacement=".runcall.pdb_publish"
-           docstringWarning="False"
-           />
-      </configure>
-    </configure>
-  </configure>
+    <monkey:patch
+       module="ZPublisher.WSGIPublisher"
+       original="call_object"
+       replacement=".wsgi_runcall.pdb_runcall"
+       docstringWarning="False"
+       />
 
     <monkey:patch
        zcml:condition="installed Products.ATContentTypes.content.base"

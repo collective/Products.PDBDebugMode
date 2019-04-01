@@ -4,7 +4,7 @@ might want to debug."""
 import sys
 try:
     import ipdb as pdb
-except:
+except ImportError:
     import pdb
 
 from Products.ZCatalog.ZCatalog import ZCatalog

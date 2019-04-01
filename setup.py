@@ -1,15 +1,13 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.5.dev0'
+version = '2.0.dev0'
 
 setup(name='Products.PDBDebugMode',
       version=version,
       description="Post-mortem debugging on Zope exceptions",
       long_description=open("README.txt").read() + "\n" + open(
           os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from
-      # http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
           "Environment :: Web Environment",
           "Topic :: Software Development :: Libraries :: Python Modules",
@@ -25,7 +23,7 @@ setup(name='Products.PDBDebugMode',
       keywords='',
       author='Ross Patterson',
       author_email='me@rpatterson.net',
-      url='http://pypi.python.org/pypi/Products.PDBDebugMode',
+      url='https://github.com/collective/Products.PDBDebugMode',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],

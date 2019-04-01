@@ -1,20 +1,22 @@
 Changelog
 =========
 
-1.5 (unreleased)
+2.0 (unreleased)
 ----------------
-
-Breaking changes:
-
-- *add item here*
 
 New features:
 
-- *add item here*
+- Add log-meesage on startup.
+  [pbauer]
 
 Bug fixes:
 
-- *add item here*
+- Remove post_mortem in tests since that feature is now a part of zope.testrunner and is unneeded here.
+  Fixes https://github.com/plone/Products.CMFPlone/issues/2803
+  [pbauer]
+
+- Remove traces of support for Zope 2.
+  [pbauer]
 
 
 1.4 (2019-03-02)

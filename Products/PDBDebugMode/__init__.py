@@ -1,35 +1,35 @@
-"""If debug-mode=on, Monkey-patch the zpublisher_exception_hook to
-call pdb.post_mortem on an error and enable import of pdb (and ipdb) in
+"""If debug-mode=on enable import of pdb (and ipdb) in
 unprotected code.
 """
+from AccessControl import allow_module
+from Products.PDBDebugMode import debugger
+from types import ModuleType
 
 import sys
-from types import ModuleType
-import AccessControl
+import logging
 
-from Products.PDBDebugMode import debugger
-
-try:
-    from ZPublisher.Publish import publish
-    ZOPE2 = True
-except:
-    try:
-        from ZServer.ZPublisher.Publish import publish
-        ZOPE2 = True
-    except:
-        ZOPE2 = False
+log = logging.getLogger(__name__)
 
 
 if debugger.is_enabled():
-    if ZOPE2:
-        z2_enabled = ModuleType('z2_enabled')
-        sys.modules['Products.PDBDebugMode.z2_enabled'] = z2_enabled
-    else:
-        z4_enabled = ModuleType('z4_enabled')
-        sys.modules['Products.PDBDebugMode.z4_enabled'] = z4_enabled
+    enabled = ModuleType('enabled')
+    sys.modules['Products.PDBDebugMode.enabled'] = enabled
+    warning = ("""
 
+******************************************************************************
+
+Debug-Mode enabled!
+
+This will result in a pdb when a exception happens.
+Turn off debug mode or remove Products.PDBDebugMode to disable.
+
+See https://pypi.python.org/pypi/Products.PDBDebugMode
+
+******************************************************************************
+""")
+
+    log.warning(warning)
     # Allow import of pdb in unprotected code
-    AccessControl.allow_module('pdb')
-    AccessControl.allow_module('ipdb')
-
-    AccessControl.allow_module('Products.PDBDebugMode.debugger')
+    allow_module('pdb')
+    allow_module('ipdb')
+    allow_module('Products.PDBDebugMode.debugger')

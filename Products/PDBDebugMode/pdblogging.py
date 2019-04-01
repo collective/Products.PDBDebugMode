@@ -10,7 +10,7 @@ import six
 try:
     from ipdb import set_trace
     from ipdb import post_mortem
-except:
+except ImportError:
     from pdb import set_trace
     from pdb import post_mortem
 
