@@ -5,6 +5,8 @@
    xmlns:monkey="http://namespaces.plone.org/monkey"
    zcml:condition="have zope2-debug-mode">
 
+  <includeDependencies package="." />
+
   <monkey:patch
      class="Products.PDBDebugMode.pdblogging.LoggerClass"
      original="error"

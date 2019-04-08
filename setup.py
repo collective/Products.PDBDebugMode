@@ -27,6 +27,8 @@ setup(name='Products.PDBDebugMode',
       zip_safe=False,
       install_requires=[
           'setuptools',
+
+          'Products.CMFCore',
           'collective.monkeypatcher',
           # -*- Extra requirements: -*-
       ],
