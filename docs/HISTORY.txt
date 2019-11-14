@@ -4,6 +4,9 @@ Changelog
 1.3.2 - Unreleased
 ------------------
 
+- Support use in Zope-only (non-CMF) applications.
+  [rpatterson]
+
 - Fix ZCML loading when used as a separate egg (as opposed to a setup.py
   dependency).
   [rpatterson]
