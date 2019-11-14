@@ -81,7 +81,7 @@
        name="pdb"
        for="*"
        class=".browser.RaiseExceptionView"
-       permission="cmf.ManagePortal"
+       permission="zope2.ViewManagementScreens"
        />
 
   </configure>
