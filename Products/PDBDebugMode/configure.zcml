@@ -5,6 +5,7 @@
    xmlns:monkey="http://namespaces.plone.org/monkey"
    zcml:condition="have zope2-debug-mode">
 
+  <include package="z3c.autoinclude" file="meta.zcml" />
   <includeDependencies package="." />
 
   <monkey:patch
