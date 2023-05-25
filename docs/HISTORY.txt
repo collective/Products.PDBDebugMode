@@ -14,7 +14,8 @@ New features:
 
 Bug fixes:
 
-- *add item here*
+- Include dependencies in zcml to fix use in a pip-based install.
+  [pbauer]
 
 
 2.0 (2019-04-01)
