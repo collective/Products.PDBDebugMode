@@ -5,6 +5,12 @@
    xmlns:monkey="http://namespaces.plone.org/monkey"
    zcml:condition="have zope-debug-mode">
 
+    <include package="collective.monkeypatcher" />
+    <include
+        package="Products.CMFCore"
+        file="permissions.zcml"
+        />
+
     <monkey:patch
        class="Products.PDBDebugMode.pdblogging.LoggerClass"
        original="error"
