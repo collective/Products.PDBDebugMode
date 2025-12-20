@@ -12,9 +12,10 @@ orig_raising = SiteErrorLog.SiteErrorLog.raising
 
 def raising(self, info):
     """Catch the traceback and bypass pdblogging"""
+
     def error(msg, *args, **kw):
-        return pdblogging.orig_error(
-            SiteErrorLog.LOG, msg, *args, **kw)
+        return pdblogging.orig_error(SiteErrorLog.LOG, msg, *args, **kw)
+
     SiteErrorLog.LOG.error = error
     result = orig_raising(self, info)
     if result:

@@ -15,13 +15,17 @@ from Products.ZCatalog.ZCatalog import ZCatalog
 orig_catalog_object = ZCatalog.catalog_object
 
 
-def catalog_object(self, obj, uid=None, idxs=None,
-                   update_metadata=1, pghandler=None):
+def catalog_object(self, obj, uid=None, idxs=None, update_metadata=1, pghandler=None):
     """Wrap to do post_mortem debugging on error."""
     try:
         return orig_catalog_object(
-            self, obj, uid=uid, idxs=idxs,
-            update_metadata=update_metadata, pghandler=pghandler)
+            self,
+            obj,
+            uid=uid,
+            idxs=idxs,
+            update_metadata=update_metadata,
+            pghandler=pghandler,
+        )
     except:
         t, v, tb = sys.exc_info()
         pdb.post_mortem(tb)
@@ -39,8 +43,7 @@ def refreshCatalog(self, clear=0, pghandler=None):
 
     num_objects = len(paths)
     if pghandler:
-        pghandler.init(
-            'Refreshing catalog: %s' % self.absolute_url(1), num_objects)
+        pghandler.init("Refreshing catalog: %s" % self.absolute_url(1), num_objects)
 
     for i in range(num_objects):
         if pghandler:

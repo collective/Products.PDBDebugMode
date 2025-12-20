@@ -23,6 +23,7 @@ def register(self, obj):
 
     # Replace the pickler so that it doesn't set oids
     import pickle as pickle
+
     writer._p = pickle.Pickler(writer._file, 1)
 
     # Try to serialize to raise piclkling errors early
