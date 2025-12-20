@@ -1,0 +1,98 @@
+# Changelog
+
+## 2.1 (2025-06-19)
+
+Bug fixes:
+
+- Include dependencies in zcml to fix use in a pip-based install. @pbauer
+
+## 2.0 (2019-04-01)
+
+New features:
+
+- Add log-meesage on startup. @pbauer
+
+Bug fixes:
+
+- Remove post_mortem in tests since that feature is now a part of zope.testrunner and is unneeded here.
+  Fixes https://github.com/plone/Products.CMFPlone/issues/2803 @pbauer
+
+- Remove traces of support for Zope 2. @pbauer
+
+## 1.4 (2019-03-02)
+
+Breaking changes:
+
+- Make compatible with Zope4 and drop support for Zope 2. @pbauer
+
+New features:
+
+- Add compatibility for Python 3 and 2. @frapell
+
+- Improve debug mode detection, provide a ZCML feature, and enable when running
+  tests with '-D'. @rpatterson
+
+- Add zope.testrunner support. @rpatterson
+
+- Add some missing iPython support for runcall and broken_delete. @rpatterson
+
+Bug fixes:
+
+- Apparently the ipdb support only works with ipdb 0.3 or greater.
+  Added an "ipdb" extra for this requirement. @rossp
+
+- Fix ipdb import in zcatalog.py. @pabo
+
+## 1.3 - 2011-01-14
+
+- Ignore invalid GenericSetup handlers. @rossp
+
+- Use ipdb when available. @neaj
+
+## 1.2 - 2011-01-07
+
+- Add some zopectl scripts I use when evaluating upgrades. @rossp
+
+- Better handling of exceptions while checking error matching. @rossp
+
+- Fix a problem with doing post_mortem debugging of error_log ignored
+  exceptions. @rossp
+
+- Fix handling of socket errors
+
+- Fix handling of SiteErrorLog tracebacks
+
+- Fix handling of exc_info logging arg
+
+## 1.1 - 2009-04-18
+
+- Fix a bug due to a change in monkeypatcher
+
+## 1.0 - 2009-04-10
+
+- Add collective.monkeypatcher as a requirement @kdeldycke
+
+- Fix some recursion errors
+
+## 0.3 - 2009-04-08
+
+- Use collective.monkeypatcher to move all patches into ZCML
+
+- Fully deprecate the Zope exception handler in favor of the logging
+  hook since the Zope exception handler uses the logging module
+  anyways and more can be done by hooking at that level.
+
+- Handle failed matches in Products.PDBDebugMode.pdblogging more
+  gracefully
+
+- More flexible log matching.  Change
+  Products.PDBDebugMode.pdblogging.ignore_regexes to ignore_matchers
+  and accept any callable.
+
+## 0.2 - 2008-05-15
+
+- Eggified
+
+## 0.1 - 2006-03-11
+
+- Initial release

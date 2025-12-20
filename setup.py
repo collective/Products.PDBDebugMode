@@ -1,8 +1,9 @@
+from pathlib import Path
 from setuptools import find_packages
 from setuptools import setup
 
-import os
 
+long_description = Path("README.md").read_text() + "\n" + Path("CHANGES.md").read_text()
 
 version = "2.2.dev0"
 
@@ -10,9 +11,8 @@ setup(
     name="Products.PDBDebugMode",
     version=version,
     description="Post-mortem debugging on Zope exceptions",
-    long_description=open("README.txt").read()
-    + "\n"
-    + open(os.path.join("docs", "HISTORY.txt")).read(),
+    long_description_content_type="text/markdown",
+    long_description=long_description,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
