@@ -13,8 +13,8 @@ ignore =
     # black takes care of spaces after commas
     E231,
 per-file-ignores =
-    Products/PDBDebugMode/scripts/broken_delete.py:F821
-    Products/PDBDebugMode/scripts/broken_by_class:F821
+    src/Products/PDBDebugMode/scripts/broken_delete.py:F821
+    src/Products/PDBDebugMode/scripts/broken_by_class:F821
 
 ##
 # Add extra configuration options in .meta.toml:
