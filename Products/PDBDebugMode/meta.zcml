@@ -1,7 +1,8 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:meta="http://namespaces.zope.org/meta"
     xmlns:zcml="http://namespaces.zope.org/zcml"
-    xmlns:meta="http://namespaces.zope.org/meta">
+    >
 
   <configure zcml:condition="installed Products.PDBDebugMode.enabled">
     <meta:provides feature="zope-debug-mode" />
