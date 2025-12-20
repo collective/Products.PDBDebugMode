@@ -4,3 +4,10 @@
 [meta]
 template = "default"
 commit-id = "2.3.1"
+
+[flake8]
+extra_lines = """
+per-file-ignores =
+    Products/PDBDebugMode/scripts/broken_delete.py:F821
+    Products/PDBDebugMode/scripts/broken_by_class:F821
+"""
