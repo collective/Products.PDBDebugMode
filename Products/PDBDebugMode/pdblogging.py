@@ -37,7 +37,7 @@ def error(self, msg, *args, **kw):
     """Drop into pdb when logging an error."""
     result = orig_error(self, msg, *args, **kw)
 
-    if not isinstance(msg, six.string_types):
+    if not isinstance(msg, str):
         msg = str(msg)
 
     for matcher in ignore_matchers:

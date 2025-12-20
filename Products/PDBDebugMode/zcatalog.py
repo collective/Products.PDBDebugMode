@@ -9,7 +9,6 @@ except ImportError:
 
 from Products.ZCatalog.ZCatalog import ZCatalog
 
-from six.moves import range
 
 
 orig_catalog_object = ZCatalog.catalog_object

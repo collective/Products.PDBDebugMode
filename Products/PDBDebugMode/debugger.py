@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 def is_enabled():
     try:
         from App.config import getConfiguration
