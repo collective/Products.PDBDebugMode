@@ -5,6 +5,9 @@
 template = "default"
 commit-id = "2.3.1"
 
+[tox]
+test_matrix = {"6.2" = ["*"]}
+
 [flake8]
 extra_lines = """
 per-file-ignores =
