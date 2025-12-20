@@ -45,8 +45,9 @@ setup(
     install_requires=[
         "setuptools",
         "collective.monkeypatcher",
-        # -*- Extra requirements: -*-
-        "six",
+        "Products.CMFCore",
+        "Products.CMFPlone",
+        "Zope",
     ],
     extras_require={
         "ipdb": ["ipdb>=0.3"],

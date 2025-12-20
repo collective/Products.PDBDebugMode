@@ -11,3 +11,6 @@ per-file-ignores =
     src/Products/PDBDebugMode/scripts/broken_delete.py:F821
     src/Products/PDBDebugMode/scripts/broken_by_class:F821
 """
+
+[pyproject]
+dependencies_ignores = "['ipdb']"
