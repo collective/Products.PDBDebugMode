@@ -42,7 +42,7 @@ def error(self, msg, *args, **kw):
         try:
             match = matcher(msg)
         except:
-            logger.exception("Matcher %r failed for log message %r" % (matcher, msg))
+            logger.exception(f"Matcher {matcher!r} failed for log message {msg!r}")
         else:
             if match:
                 break
