@@ -54,7 +54,7 @@ be set at the level in the hierarchy that it was set.
 Debug View
 ----------
 
-Additionaly, a view named 'pdb' is registered for all objects that
+Additionally, a view named 'pdb' is registered for all objects that
 will simply raise an exception leaving you with the current context to
 inspect. Use it for example by calling http://localhost:8080/Plone/foo/@@pdb.
 
