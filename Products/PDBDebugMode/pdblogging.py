@@ -1,18 +1,17 @@
 """Hook the logger.error call."""
 
-import sys
-import re
 import logging
-
+import re
 import six
+import sys
 
 
 try:
-    from ipdb import set_trace
     from ipdb import post_mortem
+    from ipdb import set_trace
 except ImportError:
-    from pdb import set_trace
     from pdb import post_mortem
+    from pdb import set_trace
 
 logger = logging.getLogger('Products.PDBDebugMode')
 

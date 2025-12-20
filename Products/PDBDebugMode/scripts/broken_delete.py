@@ -3,8 +3,10 @@ try:
 except:
     import pdb
 
-import transaction
 from AccessControl import SecurityManagement
+
+import transaction
+
 
 SecurityManagement.newSecurityManager(
     None, app.acl_users.getUser('admin'))

@@ -3,9 +3,9 @@ try:
 except ImportError:
     import pdb
 
+from Products.PDBDebugMode import pdblogging
 from Products.SiteErrorLog import SiteErrorLog
 
-from Products.PDBDebugMode import pdblogging
 
 orig_raising = SiteErrorLog.SiteErrorLog.raising
 

@@ -5,8 +5,9 @@ from AccessControl import allow_module
 from Products.PDBDebugMode import debugger
 from types import ModuleType
 
-import sys
 import logging
+import sys
+
 
 log = logging.getLogger(__name__)
 

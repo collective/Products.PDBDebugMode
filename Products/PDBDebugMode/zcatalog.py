@@ -2,13 +2,14 @@
 might want to debug."""
 
 import sys
+
+
 try:
     import ipdb as pdb
 except ImportError:
     import pdb
 
 from Products.ZCatalog.ZCatalog import ZCatalog
-
 
 
 orig_catalog_object = ZCatalog.catalog_object
