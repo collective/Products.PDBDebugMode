@@ -1,11 +1,12 @@
-try:
-    import ipdb as pdb
-except:
-    import pdb
-
 from AccessControl import SecurityManagement
 
 import transaction
+
+
+try:
+    import ipdb as pdb
+except ImportError:
+    import pdb
 
 
 SecurityManagement.newSecurityManager(None, app.acl_users.getUser("admin"))
@@ -22,8 +23,8 @@ for path, obj in app.ZopeFind(app, search_sub=True, obj_expr="id=='broken'"):
         if broken_id in container.objectIds():
             if container.manage_delObjects is not None:
                 container.manage_delObjects([broken_id])
-    except:
-        import pdb
+    except Exception:
+        import pdb  # noqa: F811
         import sys
 
         pdb.post_mortem(sys.exc_info()[2])

@@ -26,7 +26,7 @@ def catalog_object(self, obj, uid=None, idxs=None, update_metadata=1, pghandler=
             update_metadata=update_metadata,
             pghandler=pghandler,
         )
-    except:
+    except Exception:
         t, v, tb = sys.exc_info()
         pdb.post_mortem(tb)
         raise

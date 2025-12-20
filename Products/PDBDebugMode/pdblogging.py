@@ -2,7 +2,6 @@
 
 import logging
 import re
-import six
 import sys
 
 
@@ -41,7 +40,7 @@ def error(self, msg, *args, **kw):
     for matcher in ignore_matchers:
         try:
             match = matcher(msg)
-        except:
+        except Exception:
             logger.exception(f"Matcher {matcher!r} failed for log message {msg!r}")
         else:
             if match:
