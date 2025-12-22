@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    zcml:condition="have zope-debug-mode"
+    >
+
+  <monkey:patch
+      original="register"
+      replacement=".zodb.register"
+      class="ZODB.Connection.Connection"
+      />
+
+</configure>

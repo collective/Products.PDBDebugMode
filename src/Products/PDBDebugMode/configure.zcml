@@ -1,0 +1,77 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    zcml:condition="have zope-debug-mode"
+    >
+
+  <include package="collective.monkeypatcher" />
+  <include
+      package="Products.CMFCore"
+      file="permissions.zcml"
+      />
+
+  <monkey:patch
+      original="error"
+      replacement=".pdblogging.error"
+      class="Products.PDBDebugMode.pdblogging.LoggerClass"
+      />
+
+  <monkey:patch
+      original="raising"
+      replacement=".errorlog.raising"
+      class="Products.SiteErrorLog.SiteErrorLog.SiteErrorLog"
+      zcml:condition="installed Products.SiteErrorLog.SiteErrorLog"
+      />
+
+  <monkey:patch
+      original="call_object"
+      replacement=".wsgi_runcall.pdb_runcall"
+      module="ZPublisher.WSGIPublisher"
+      docstringWarning="False"
+      />
+
+  <monkey:patch
+      original="initializeArchetype"
+      replacement=".archetypes.initializeATCT"
+      class="Products.ATContentTypes.content.base.ATCTMixin"
+      zcml:condition="installed Products.ATContentTypes.content.base"
+      />
+
+  <monkey:patch
+      original="getCatalogsByType"
+      replacement=".archetypes.getCatalogsByType"
+      class="Products.Archetypes.ArchetypeTool.ArchetypeTool"
+      zcml:condition="installed Products.Archetypes.ArchetypeTool"
+      />
+
+  <monkey:patch
+      original="upgrade"
+      replacement=".cmfplone.upgrade"
+      class="Products.CMFPlone.MigrationTool.MigrationTool"
+      zcml:condition="installed Products.CMFPlone.MigrationTool"
+      />
+
+  <monkey:patch
+      original="catalog_object"
+      replacement=".zcatalog.catalog_object"
+      class="Products.ZCatalog.ZCatalog.ZCatalog"
+      zcml:condition="installed Products.ZCatalog.ZCatalog"
+      />
+
+  <monkey:patch
+      original="refreshCatalog"
+      replacement=".zcatalog.refreshCatalog"
+      class="Products.ZCatalog.ZCatalog.ZCatalog"
+      zcml:condition="installed Products.ZCatalog.ZCatalog"
+      />
+
+  <browser:page
+      name="pdb"
+      for="*"
+      class=".browser.RaiseExceptionView"
+      permission="cmf.ManagePortal"
+      />
+
+</configure>

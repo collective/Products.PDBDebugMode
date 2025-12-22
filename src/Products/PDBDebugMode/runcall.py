@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 try:
     import ipdb as pdb
 except ImportError:
@@ -6,19 +5,20 @@ except ImportError:
 
 from ZServer.ZPublisher import Publish
 
+
 real_publish = Publish.publish
 
 
 def resolveDottedName(dotted_name):
     """Resolve the dotted name importing as necessary then using
     getattr."""
-    idx = dotted_name.find('.')
+    idx = dotted_name.find(".")
     if idx == -1:
         base_name = dotted_name
         rest_path = []
     else:
         base_name = dotted_name[:idx]
-        rest_path = dotted_name[idx + 1:].split('.')
+        rest_path = dotted_name[idx + 1 :].split(".")
 
     obj = __import__(base_name)
 
@@ -36,45 +36,54 @@ def pdb_runcall(object, args, request):
     has the toggle_runcall key."""
     response = request.response
 
-    if 'toggle_runcall' in request and request.toggle_runcall:
-        runcall_cookie = request.cookies.get('pdb_runcall', False)
+    if "toggle_runcall" in request and request.toggle_runcall:
+        runcall_cookie = request.cookies.get("pdb_runcall", False)
         if runcall_cookie:
-            response.expireCookie('pdb_runcall')
+            response.expireCookie("pdb_runcall")
             return Publish.call_object(object, args, request)
         else:
-            response.setCookie('pdb_runcall', 1)
+            response.setCookie("pdb_runcall", 1)
 
-    if 'set_runcall_ignore' in request:
+    if "set_runcall_ignore" in request:
         if request.set_runcall_ignore:
             for ignore in request.set_runcall_ignore:
-                response.appendCookie('runcall_ignore', ignore)
+                response.appendCookie("runcall_ignore", ignore)
         else:
-            response.expireCookie('runcall_ignore')
+            response.expireCookie("runcall_ignore")
 
-    if 'pdb_runcall' in request:
+    if "pdb_runcall" in request:
         if request.pdb_runcall:
-            ignores = request.get('runcall_ignore', [])
+            ignores = request.get("runcall_ignore", [])
             if ignores:
-                ignores = ignores.split(':')
+                ignores = ignores.split(":")
             for ignore in ignores:
                 obj = resolveDottedName(ignore)
-                if obj.__func__ is getattr(object, 'im_func', None):
+                if obj.__func__ is getattr(object, "im_func", None):
                     break
             else:
                 return pdb.runcall(object, *args)
     return Publish.call_object(object, args, request)
 
 
-def pdb_publish(request, module_name, after_list, debug=0,
-                call_object=pdb_runcall,
-                missing_name=Publish.missing_name,
-                dont_publish_class=Publish.dont_publish_class,
-                mapply=Publish.mapply, ):
+def pdb_publish(
+    request,
+    module_name,
+    after_list,
+    debug=0,
+    call_object=pdb_runcall,
+    missing_name=Publish.missing_name,
+    dont_publish_class=Publish.dont_publish_class,
+    mapply=Publish.mapply,
+):
     """Hook the publish function to override the function used to call
     the result of the request traversal."""
     return real_publish(
-        request, module_name, after_list, debug=0,
+        request,
+        module_name,
+        after_list,
+        debug=0,
         call_object=call_object,
         missing_name=missing_name,
         dont_publish_class=dont_publish_class,
-        mapply=mapply, )
+        mapply=mapply,
+    )

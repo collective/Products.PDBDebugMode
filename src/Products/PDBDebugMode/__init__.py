@@ -1,20 +1,22 @@
 """If debug-mode=on enable import of pdb (and ipdb) in
 unprotected code.
 """
+
 from AccessControl import allow_module
 from Products.PDBDebugMode import debugger
 from types import ModuleType
 
-import sys
 import logging
+import sys
+
 
 log = logging.getLogger(__name__)
 
 
 if debugger.is_enabled():
-    enabled = ModuleType('enabled')
-    sys.modules['Products.PDBDebugMode.enabled'] = enabled
-    warning = ("""
+    enabled = ModuleType("enabled")
+    sys.modules["Products.PDBDebugMode.enabled"] = enabled
+    warning = """
 
 ******************************************************************************
 
@@ -26,10 +28,10 @@ Turn off debug mode or remove Products.PDBDebugMode to disable.
 See https://pypi.python.org/pypi/Products.PDBDebugMode
 
 ******************************************************************************
-""")
+"""
 
     log.warning(warning)
     # Allow import of pdb in unprotected code
-    allow_module('pdb')
-    allow_module('ipdb')
-    allow_module('Products.PDBDebugMode.debugger')
+    allow_module("pdb")
+    allow_module("ipdb")
+    allow_module("Products.PDBDebugMode.debugger")

@@ -10,7 +10,7 @@ def initializeArchetype(self, **kwargs):
     self.markCreationFlag()
     self.setDefaults()
     if kwargs:
-        kwargs['_initializing_'] = True
+        kwargs["_initializing_"] = True
         self.edit(**kwargs)
     self._signature = self.Schema().signature()
 
@@ -30,11 +30,11 @@ def initializeATCT(self, **kwargs):
 def getCatalogsByType(self, portal_type):
     """Don't swallow catalog access errors."""
     catalogs = []
-    catalog_map = getattr(self, 'catalog_map', None)
+    catalog_map = getattr(self, "catalog_map", None)
     if catalog_map is not None:
-        names = self.catalog_map.get(portal_type, ['portal_catalog'])
+        names = self.catalog_map.get(portal_type, ["portal_catalog"])
     else:
-        names = ['portal_catalog']
+        names = ["portal_catalog"]
     for name in names:
         catalogs.append(getToolByName(self, name))
     return catalogs

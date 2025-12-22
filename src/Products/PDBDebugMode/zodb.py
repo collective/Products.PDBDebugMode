@@ -1,6 +1,7 @@
 from ZODB import Connection
 from ZODB.serialize import ObjectWriter
 
+
 orig_register = Connection.Connection.register
 
 
@@ -21,7 +22,8 @@ def register(self, obj):
     writer = ObjectWriter(obj)
 
     # Replace the pickler so that it doesn't set oids
-    import six.moves.cPickle as pickle
+    import pickle as pickle
+
     writer._p = pickle.Pickler(writer._file, 1)
 
     # Try to serialize to raise piclkling errors early

@@ -1,5 +1,8 @@
-recursive-include Products *.py
-recursive-include Products *.txt
-recursive-include Products *.zcml
-recursive-include docs *.GPL
-recursive-include docs *.txt
+include *.md
+
+recursive-include docs *
+recursive-include src *
+
+global-exclude *pyc
+include pyproject.toml
+recursive-exclude news *

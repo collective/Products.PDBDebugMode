@@ -3,6 +3,7 @@ might want to debug."""
 
 from Products.CMFPlone.MigrationTool import MigrationTool
 
+
 orig_upgrade = MigrationTool.upgrade
 
 
