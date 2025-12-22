@@ -122,7 +122,8 @@ Zope = [
 ]
 python-dateutil = ['dateutil']
 pytest-plone = ['pytest', 'zope.pytestlayer', 'plone.testing', 'plone.app.testing']
-ignore-packages = ['ipdb']
+ignore-packages = ['ipdb', 'Products.SiteErrorLog', 'ZServer', 'zope.testing', 'zope.testrunner']
+
 ##
 # Add extra configuration options in .meta.toml:
 #  [pyproject]

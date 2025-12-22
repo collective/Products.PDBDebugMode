@@ -3,7 +3,7 @@
 # See the inline comments on how to expand/tweak this configuration file
 [meta]
 template = "default"
-commit-id = "2.3.1"
+commit-id = "2.2.3.dev0"
 
 [tox]
 test_matrix = {"6.2" = ["*"]}
@@ -16,4 +16,4 @@ per-file-ignores =
 """
 
 [pyproject]
-dependencies_ignores = "['ipdb']"
+dependencies_ignores = "['ipdb', 'Products.SiteErrorLog', 'ZServer', 'zope.testing', 'zope.testrunner']"
