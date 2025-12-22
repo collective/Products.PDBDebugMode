@@ -19,7 +19,7 @@ Bug fixes:
 
 New features:
 
-- Add log-meesage on startup. @pbauer
+- Add log-message on startup. @pbauer
 
 Bug fixes:
 

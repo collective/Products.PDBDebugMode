@@ -8,8 +8,9 @@ hooks are also included.
 
 ## Requirements
 
-This version of PDBDebugMode has been tested with Zope4 and Plone 5.2 in
-Python 2.7, 3.6 and 3.7
+This version of PDBDebugMode has been tested with Plone 6.2 on Python 3.10-3.13.
+
+For Zope4 and Plone 5.2 in Python 2.7, 3.6 and 3.7 please use `Products.PDBDebugMode = 2.1`.
 
 For Zope 2 (until Plone 5.1) please use `Products.PDBDebugMode = 1.3`.
 
