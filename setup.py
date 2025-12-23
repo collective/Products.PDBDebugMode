@@ -4,7 +4,7 @@ from setuptools import setup
 
 long_description = Path("README.md").read_text() + "\n" + Path("CHANGES.md").read_text()
 
-version = "3.0.0.dev0"
+version = "3.0.0"
 
 setup(
     name="Products.PDBDebugMode",
