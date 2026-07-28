@@ -6,7 +6,6 @@ except ImportError:
 from Products.PDBDebugMode import pdblogging
 from Products.SiteErrorLog import SiteErrorLog
 
-
 orig_raising = SiteErrorLog.SiteErrorLog.raising
 
 

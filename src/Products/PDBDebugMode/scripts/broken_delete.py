@@ -2,7 +2,6 @@ from AccessControl import SecurityManagement
 
 import transaction
 
-
 try:
     import ipdb as pdb
 except ImportError:

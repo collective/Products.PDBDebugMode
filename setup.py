@@ -1,7 +1,6 @@
 from pathlib import Path
 from setuptools import setup
 
-
 long_description = Path("README.md").read_text() + "\n" + Path("CHANGES.md").read_text()
 
 version = "3.0.1.dev0"
@@ -26,6 +25,7 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
     ],
     keywords="Plone, debug, pdb",
     author="Ross Patterson",

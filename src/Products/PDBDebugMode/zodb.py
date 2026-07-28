@@ -1,7 +1,6 @@
 from ZODB import Connection
 from ZODB.serialize import ObjectWriter
 
-
 orig_register = Connection.Connection.register
 
 

@@ -4,7 +4,6 @@ import logging
 import re
 import sys
 
-
 try:
     from ipdb import post_mortem
     from ipdb import set_trace
